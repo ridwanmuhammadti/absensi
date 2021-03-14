@@ -1,0 +1,10 @@
+1. Laporan Data Siswa 
+2. Laporan Pelanggaran Siswa
+3. Laporan Prestasi Siswa
+4. Laporan Konsultasi Siswa
+4. Laporan Surat Pemanggilan Siswa
+5. Laporan Surat Pemanggilan Orang tua
+6. Laporan filter rentang waktu tanggal pelanggaran
+7. Laporan Sms Gateway Pelanggaran Siswa
+8. Laporan filter rentang waktu tanggal pelanggaran
+9. Laporan Pelanggaran terbanyak yang dilakukan
