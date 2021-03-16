@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content">
-    <div class="panel-header bg-primary-gradient">
+    <div class="panel-header bg-success-gradient">
         <div class="page-inner py-5">
             <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                 <div>
@@ -11,8 +11,8 @@
                 </div>
                 <div class="ml-md-auto py-2 py-md-0">
               
-                    {{-- <a href="/pegawai/cetak" class="mr-2 btn btn-info btn-round" target="_blank"> <i class="fa fa-print"></i> Print</a>
-             
+                   <a href="/pegawai/cetak" class="mr-2 btn btn-info btn-round" target="_blank"> <i class="fa fa-print"></i> Print</a>
+              {{-- 
                     <a href="/pegawai/filter/uraian" class="mr-2 btn btn-secondary btn-round"> <i class="fa fa-filter"></i> Filter pegawai</a>
              
                     <a href="/pegawai/filter/waktu" class="mr-2 btn btn-secondary btn-round"> <i class="fa fa-filter"></i> Filter Waktu</a>

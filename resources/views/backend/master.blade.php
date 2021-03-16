@@ -35,7 +35,7 @@
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
+			<div class="logo-header" data-background-color="green">
 				
 				<a href="#" class="logo text-white">
 					<img src=""  class="navbar-brand"> <span class="">ABSENSI RS</span>
@@ -55,7 +55,7 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
 				
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
@@ -156,7 +156,9 @@
 
 
 
-					<ul class="nav nav-primary">
+					<ul class="nav nav-success">
+						@if (auth()->user()->role == 2)
+							
 						<li class="nav-item active">
 							<a href="/dashboard" class="collapsed" aria-expanded="false">
 								<i class="fas fa-home"></i>
@@ -166,7 +168,32 @@
 						
 						</li>
 
+						<li class="nav-item">
+							<a href="/pegawai/{{ auth()->user()->pegawai->uuid }}/show">
+								<i class="fas fa-user"></i>
+								<p>Profile</p>
+							</a>
+						
+						 </li> 
+						<li class="nav-item">
+							<a href="/gantipassword/{{ auth()->user()->uuid }}">
+								<i class="fas fa-key"></i>
+								<p>Ganti Password</p>
+							</a>
+						
+						 </li> 
+						 @endif
+						
+
 						@if (auth()->user()->role == 1)
+						<li class="nav-item active">
+							<a href="/dashboard" class="collapsed" aria-expanded="false">
+								<i class="fas fa-home"></i>
+								<p>Dashboard</p>
+							
+							</a>
+						
+						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
@@ -176,6 +203,7 @@
 
 					
 							
+					
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#master">
 								<i class="fas fa-layer-group"></i>
@@ -205,6 +233,34 @@
 							</div>
 						</li>
 
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#laporan">
+								<i class="fas fa-file"></i>
+								<p>Laporan</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="laporan">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="/laporan">
+											<span class="sub-item">Laporan Absensi</span>
+										</a>
+									</li>
+									{{-- <li>
+										<a href="/pegawai">
+											<span class="sub-item">Data Pegawai</span>
+										</a>
+									</li> --}}
+									{{-- <li>
+										<a href="/kelas">
+											<span class="sub-item">Data Kelas</span>
+										</a>
+									</li> --}}
+								
+								
+								</ul>
+							</div>
+						</li>
 						
 						@endif
 						{{-- <li class="nav-item">

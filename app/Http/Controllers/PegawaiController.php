@@ -79,7 +79,7 @@ class PegawaiController extends Controller
            
             $file = $request->file('foto');
             $FotoExt = $file->getClientOriginalExtension();
-            $name = time().'-'.$request->nama.'-'.'.'.$FotoExt;
+            $name = time().'-'.date('Y-m-d').'-'.'.'.$FotoExt;
             $to = 'uploads/images';
             $file->move($to, $name);
             $data->foto = $name;
@@ -164,7 +164,7 @@ class PegawaiController extends Controller
            
             $file = $request->file('foto');
             $FotoExt = $file->getClientOriginalExtension();
-            $name = time().'-'.$request->nama.'-'.'.'.$FotoExt;
+            $name = time().'-'.date('Y-m-d').'-'.'.'.$FotoExt;
             $to = 'uploads/images';
             $file->move($to, $name);
             $data->foto = $name;

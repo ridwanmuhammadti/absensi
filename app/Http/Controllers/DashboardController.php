@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Absen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        
         $user_id = Auth::user()->id;
         $absen = Absen::where('user_id', $user_id)->orderByDesc('created_at')->get();
         $date = date("Y-m-d");
         $cek = Absen::where(['user_id' => $user_id, 'tanggal' => $date])->get()->first();
+        $absenNow = Absen::where('tanggal', $date)->get();
+        $Telat = $absenNow->where('ket','Telat');
+        $Masuk = $absenNow->where('ket','Masuk');
+        $Alpha = $absenNow->where('ket','Alpha');
+        
+        
 
         if (is_null($cek)){
             $info = array(
@@ -35,6 +43,6 @@ class DashboardController extends Controller
             );
         }
 
-        return view('backend.dashboard.index',compact('absen','info'));
+        return view('backend.dashboard.index',compact('absen','info','absenNow','Telat','Masuk','Alpha'));
     }
 }

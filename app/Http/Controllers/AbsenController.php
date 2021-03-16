@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Absen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class AbsenController extends Controller
@@ -35,13 +36,29 @@ class AbsenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function absen(Request $request)
-    {
-        // dd($request->all());
+    {  
+        if (date('l') == 'Saturday' || date('l') == 'Sunday') {
+            return redirect()->back()->with('toast_error','Hari Libur Tidak bisa Absen');
+        }
+
         $user_id = Auth::user()->id;
         $date = date('Y-m-d');
         $time = date('H:i:s');
-        $ket = $request->ket;
-        
+
+       if ( (strtotime($time) >= strtotime('06:00:00') && strtotime($time) <= strtotime('08:00:00'))){
+
+           $keterangan = 'Masuk';
+       }
+        elseif( (strtotime($time) >= strtotime('08:00:00') && strtotime($time) <= strtotime('17:00:00'))){
+            
+            $keterangan = 'Telat';
+        }
+
+        else{
+            
+            $keterangan = 'Alpha';
+        }
+    
 
         $absen = new Absen;
 
@@ -58,7 +75,7 @@ class AbsenController extends Controller
                 'user_id' => $user_id,
                 'tanggal' => $date,
                 'time_in' => $time,
-                'ket' => $ket,
+                'ket' => $keterangan,
             ]);
 
             return redirect()->back()->with('success','Anda Berhasil Absen Masuk');
@@ -68,7 +85,7 @@ class AbsenController extends Controller
             $absen->where(['tanggal' => $date, 'user_id' => $user_id])
             ->update([
                 'time_out' => $time,
-                'ket' => $ket,
+                // 'ket' => $keterangan,
             ]);
 
             

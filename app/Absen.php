@@ -15,4 +15,9 @@ class Absen extends Model
      * @var array
      */
     protected $fillable = ['user_id','tanggal','time_in','time_out','ket'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

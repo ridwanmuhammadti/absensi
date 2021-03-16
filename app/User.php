@@ -45,4 +45,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Pegawai::class);
     }
+
+    public function absen()
+    {
+        return $this->HasMany(Absen::class);
+    }
 }
